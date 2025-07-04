@@ -5,6 +5,10 @@ const { Server } = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/chatdb')
+  .then(() => console.log('✅ MongoDB connected'))
+  .catch((err) => console.error('MongoDB error:', err));
 
 // Enable CORS for client dev port (default: 3000)
 app.use(cors());
