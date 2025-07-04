@@ -55,3 +55,9 @@ const io = new Server(server, {
 });
 
 socketHandler(io); // Register all socket events
+const authRoutes = require('./routes/authRoutes');
+const chatRoutes = require('./routes/chatRoutes');
+app.use(express.json()); // For parsing JSON bodies
+
+app.use('/api/auth', authRoutes);
+app.use('/api/chat', chatRoutes);
